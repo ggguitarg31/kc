@@ -1,0 +1,136 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+{% block style %}
+{{ block.super }}
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+      integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+<style>
+    .fixed-top {
+        height: 100px;
+        background-color: #5e0231;
+        position: relative;
+    }
+
+    body {
+        background-color: #020213;
+        /*background: linear-gradient(to bottom, rgba(140, 122, 122, 1) 0%, rgba(175, 135, 124, 1) 65%, rgba(175, 135, 124, 1) 100%) fixed;*/
+        /*background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/coc-background.jpg') no-repeat center center fixed;*/
+        /*background-size: cover;*/
+    }
+
+    img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .shop_name p {
+        transform: translateY(-50%);
+    }
+
+    .btn_long_info img {
+        margin: 20px;
+    }
+
+    .details {
+        position: absolute;
+        left: 60vw;
+        top: 50vh;
+    }
+.details {
+        position: absolute;
+        left: 50vw;
+        top: 50vh;
+    transform: translateX(-50%);
+    }
+
+    /*.img img {*/
+        /*height: 80vh;*/
+        /*width: 60vh;*/
+        /*position: absolute;*/
+        /*bottom: 0;*/
+        /*left: 10vw;*/
+    /*}*/
+
+    /*@media screen and (max-width: 1024px) {*/
+        /*.details {*/
+            /*right: 10vw;*/
+            /*top: 50vh;*/
+        /*}*/
+
+        /*.img img {*/
+            /*bottom: 0;*/
+            /*left: 0vw;*/
+        /*}*/
+    /*}*/
+
+    /*@media screen and (max-width: 720px) {*/
+        /*.details {*/
+            /*left: 50vw;*/
+            /*top: 15vh;*/
+            /*transform: translateX(-50%);*/
+        /*}*/
+
+        /*.img img {*/
+            /*height: 60vh;*/
+            /*width: 40vh;*/
+            /*bottom: 0;*/
+            /*left: 50vw;*/
+            /*transform: translateX(-50%);*/
+        /*}*/
+    /*}*/
+</style>
+{% endblock %}
+{% block body %}
+<nav class="navbar navbar-expand-md navbar-dark " style="background:#5e0231 ">
+    <a class="navbar-brand" href="#">Singla Button Store</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/contact-us">Contact Us</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" style="">
+            <button class="btn my-2 my-sm-0" type="submit" style="border-radius: 50%"><i class="fa fa-search"></i>
+            </button>
+
+        </form>
+    </div>
+</nav>
+<div class="container text-center" style="height: 90vh; overflow: hidden">
+    <!--<div class="row text-center" style="height: inherit; color: white;">-->
+    <!--<div class="img">-->
+        <!--<img src="{% static 'images/kiran.png' %}">-->
+    <!--</div>-->
+    <!--<div class="col-6 mx-auto details" style="height: inherit; margin-top: 50vh;">-->
+    <div class="details" style="color: white;">
+        <div>
+            Mrs. Kiran Gupta
+            <br>
+            Gupta Type Wale, Jai Sai Ram Bhawan, Court Road, Ward No.7, Sangaria
+            <br>
+            <a href="tel:+6375932299" style="text-decoration: none; color: white">
+                <i class="fas fa-phone"
+                   aria-hidden="true"></i> 6375932299</a>
+        </div>
+    </div>
+    <!--</div>-->
+</div>
+<!-- Intro end-->
+
+{% endblock %}
+{% block scripts %}
+{{ block.super }}
+
+<script>
+</script>
+{% endblock %}

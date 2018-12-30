@@ -1,0 +1,424 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+{% block style %}
+{{ block.super }}
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+      integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnify/2.3.2/css/magnify.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnify/2.3.2/css/magnify.min.css.map">
+<style>
+    .fixed-top {
+        height: 100px;
+        background-color: #5e0231;
+        position: relative;
+    }
+
+    body {
+        background-color: #020213;
+        /*background: linear-gradient(to bottom, rgba(140, 122, 122, 1) 0%, rgba(175, 135, 124, 1) 65%, rgba(175, 135, 124, 1) 100%) fixed;*/
+        /*background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/coc-background.jpg') no-repeat center center fixed;*/
+        /*background-size: cover;*/
+    }
+
+    .category_heading {
+        border-bottom: black 0.2rem solid;
+        padding-bottom: 1rem;
+        color: black;
+    }
+
+    img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .shop_name {
+        font-family: 'Apple Braille';
+        font-size: xx-large;
+        color: whitesmoke;
+        padding-top: 50px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .shop_name p {
+        transform: translateY(-50%);
+    }
+
+    .cloth_long_info img {
+        margin: 20px;
+    }
+
+    @media screen and (max-width: 720px) {
+        .shop_name {
+            font-size: x-large;
+        }
+    }
+
+    /*table {*/
+    /*transform: translateX(-50%);*/
+    /*}*/
+
+    /*html, body {*/
+    /*background: #E3E3D8;*/
+    /*font-family: sans-serif;*/
+    /*padding: 25px;*/
+    /*}*/
+
+    .wrapper {
+        width: 300px;
+        height: 430px;
+        background: white;
+        margin: auto;
+        padding: 0;
+        position: relative;
+        overflow: hidden;
+        border-radius: 10px 10px 10px 10px;
+        box-shadow: 0;
+        transform: scale(0.95);
+        transition: box-shadow 0.5s, transform 0.5s;
+    }
+
+    .wrapper:hover {
+        transform: scale(1);
+        box-shadow: 5px 20px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .wrapper .container {
+        width: 100%;
+        height: 100%;
+        padding: 0;
+    }
+
+    .wrapper .container .top {
+        height: 80%;
+        width: 100%;
+        padding: 0;
+        /*background: url(https://s-media-cache-ak0.pinimg.com/736x/49/80/6f/49806f3f1c7483093855ebca1b8ae2c4.jpg) no-repeat center center;*/
+        -webkit-background-size: 100%;
+        -moz-background-size: 100%;
+        -o-background-size: 100%;
+        background-size: contain;
+    }
+
+    .wrapper .container .bottom {
+        width: 200%;
+        height: 20%;
+        transition: transform 0.5s;
+    }
+
+    /*.wrapper .container .bottom.clicked {*/
+    /*transform: translateX(-50%);*/
+    /*}*/
+
+    .wrapper .container .bottom h1 {
+        margin: 0;
+        padding: 0;
+    }
+
+    .wrapper .container .bottom p {
+        margin: 0;
+        padding: 0;
+    }
+
+    .wrapper .container .bottom .left {
+        height: 100%;
+        width: 50%;
+        background: #856046;
+        position: relative;
+        float: left;
+    }
+
+    .wrapper .container .bottom .left .details {
+        padding-top: 20px;
+        float: left;
+        width: calc(70% - 40px);
+        margin-left: 25%;
+        color: #F3F7F6;
+    }
+
+    /*.wrapper .container .bottom .left .buy {*/
+    /*float: right;*/
+    /*width: calc(30% - 2px);*/
+    /*height: 100%;*/
+    /*background: #f1f1f1;*/
+    /*transition: background 0.5s;*/
+    /*border-left: solid thin rgba(0, 0, 0, 0.1);*/
+    /*}*/
+
+    /*.wrapper .container .bottom .left .buy i {*/
+    /*font-size: 30px;*/
+    /*padding: 30px;*/
+    /*color: #254053;*/
+    /*transition: transform 0.5s;*/
+    /*}*/
+
+    /*.wrapper .container .bottom .left .buy:hover {*/
+    /*background: #A6CDDE;*/
+    /*}*/
+
+    /*.wrapper .container .bottom .left .buy:hover i {*/
+    /*transform: translateY(5px);*/
+    /*color: #00394B;*/
+    /*}*/
+
+    /*.wrapper .container .bottom .right {*/
+    /*width: 50%;*/
+    /*background: #A6CDDE;*/
+    /*color: white;*/
+    /*float: right;*/
+    /*height: 200%;*/
+    /*overflow: hidden;*/
+    /*}*/
+
+    /*.wrapper .container .bottom .right .details {*/
+    /*padding: 20px;*/
+    /*float: right;*/
+    /*width: calc(70% - 40px);*/
+    /*}*/
+
+    /*.wrapper .container .bottom .right .done {*/
+    /*width: calc(30% - 2px);*/
+    /*float: left;*/
+    /*transition: transform 0.5s;*/
+    /*border-right: solid thin rgba(255, 255, 255, 0.3);*/
+    /*height: 50%;*/
+    /*}*/
+
+    /*.wrapper .container .bottom .right .done i {*/
+    /*font-size: 30px;*/
+    /*padding: 30px;*/
+    /*color: white;*/
+    /*}*/
+
+    /*.wrapper .container .bottom .right .remove {*/
+    /*width: calc(30% - 1px);*/
+    /*clear: both;*/
+    /*border-right: solid thin rgba(255, 255, 255, 0.3);*/
+    /*height: 50%;*/
+    /*background: #BC3B59;*/
+    /*transition: transform 0.5s, background 0.5s;*/
+    /*}*/
+
+    /*.wrapper .container .bottom .right .remove:hover {*/
+    /*background: #9B2847;*/
+    /*}*/
+
+    /*.wrapper .container .bottom .right .remove:hover i {*/
+    /*transform: translateY(5px);*/
+    /*}*/
+
+    /*.wrapper .container .bottom .right .remove i {*/
+    /*transition: transform 0.5s;*/
+    /*font-size: 30px;*/
+    /*padding: 30px;*/
+    /*color: white;*/
+    /*}*/
+
+    /*.wrapper .container .bottom .right:hover .remove, .wrapper .container .bottom .right:hover .done {*/
+    /*transform: translateY(-100%);*/
+    /*}*/
+
+    .wrapper .inside {
+        z-index: 9;
+        background: #c7a693;
+        width: 140px;
+        height: 140px;
+        position: absolute;
+        top: -70px;
+        right: -70px;
+        border-radius: 0px 0px 200px 200px;
+        transition: all 0.5s, border-radius 2s, top 1s;
+        overflow: hidden;
+    }
+
+    .wrapper .inside .icon {
+        position: absolute;
+        right: 85px;
+        top: 85px;
+        color: white;
+        opacity: 1;
+        font-size: x-large;
+    }
+
+    .wrapper .inside:hover {
+        width: 100%;
+        right: 0;
+        top: 0;
+        border-radius: 0;
+        height: 80%;
+    }
+
+    .wrapper .inside:hover .icon {
+        opacity: 0;
+        right: 15px;
+        top: 15px;
+    }
+
+    .wrapper .inside:hover .contents {
+        opacity: 1;
+        transform: scale(1);
+        transform: translateY(0);
+    }
+
+    .wrapper .inside .contents {
+        margin-top: 10px;
+        padding: 5%;
+        opacity: 0;
+        transform: scale(0.5);
+        transform: translateY(-200%);
+        transition: opacity 0.2s, transform 0.8s;
+    }
+
+    .wrapper .inside .contents table {
+        text-align: left;
+        width: 100%;
+    }
+
+    .wrapper .inside .contents h1, .wrapper .inside .contents p, .wrapper .inside .contents table {
+        color: white;
+    }
+
+    .wrapper .inside .contents p {
+        font-size: 13px;
+    }
+.magnify{
+    width: 100%;
+    height:100%;
+}
+.magnify > .magnify-lens { background-color: color !important; }
+
+</style>
+{% endblock %}
+{% block body %}
+<!--<div class="fixed-top " style="text-align: left">-->
+    <!--<div class="shop_name">-->
+        <!--<p>Singla's Button Store</p>-->
+    <!--</div>-->
+
+<!--</div>-->
+<nav class="navbar navbar-expand-md navbar-dark " style="background:#5e0231 ">
+  <a class="navbar-brand" href="#">Singla Button Store</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mx-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/contact-us">Contact Us</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" style="">
+      <button class="cloth my-2 my-sm-0" type="submit" style="border-radius: 50%"><i class="fa fa-search"></i></button>
+
+    </form>
+  </div>
+</nav>
+<div class="container">
+    {#{% for cloth_type in clothes_categories %}#}
+    <div class="row text-center my-5 justify-content-center">
+        <!--<div class="col col-12">-->
+        <!--<h3 class="category_heading">{{ cloth_type.name }}</h3>-->
+        <!--</div>-->
+        {#{% for cloth in cloth_type.cloth_category.all %}#}
+        {% for cloth in clothes %}
+        <div class="wrapper my-3">
+            <div class="container">
+                <div class="top">
+                    <img src="{{ cloth.image.url }}" class="zoom" data-magnify-src="{{ cloth.image.url }}">
+                </div>
+                <div class="bottom">
+                    <div class="left">
+                        <div class="details">
+                            <h1 style="text-transform: uppercase">{{ cloth.model_no}}</h1>
+                            <!--<p>{{ cloth.size }}L</p>-->
+                        </div>
+                        <!--<div class="buy"><i class="fas fa-plus"></i></div>-->
+                    </div>
+                    <!--<div class="right">-->
+                    <!--<div class="done"><i class="material-icons">done</i></div>-->
+                    <!--<div class="details">-->
+                    <!--<h1>Chair</h1>-->
+                    <!--<p>Added to your cart</p>-->
+                    <!--</div>-->
+                    <!--<div class="remove"><i class="material-icons">clear</i></div>-->
+                    <!--</div>-->
+                </div>
+            </div>
+            <div class="inside">
+                <div class="icon"><i class="fas fa-info-circle"></i>
+                </div>
+                <div class="contents">
+                    <table style="text-align: center">
+                        <tr>
+                            <th>Model No</th>
+                        </tr>
+                        <tr>
+                            <td style="text-transform: uppercase;">{{ cloth.model_no}}</td>
+                        </tr>
+                        <tr>
+                            <th>Sizes</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                {% for sizes in cloth.size.all %}
+                                {% if forloop.last %}
+                                {{ sizes.size }}
+                                {% else %}
+                                {{ sizes.size }},
+                                {% endif %}
+                                {% endfor %}
+                            </td>
+                        </tr>
+                        {% if cloth.price %}
+                        <tr>
+                            <th>Price</th>
+                        </tr>
+                        <tr>
+                            <td>Rs.{{ cloth.price }}</td>
+                        </tr>
+                        {% endif %}
+                        <tr>
+                            <th>Qualities</th>
+                        </tr>
+                        {% for quality in cloth.qualities.all %}
+                        <tr>
+                            <td>{{ quality.name }}</td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!--</div>-->
+
+        {% endfor %}
+    </div>
+    {# {% endfor %}#}
+
+</div>
+{% endblock %}
+{% block scripts %}
+{{ block.super }}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/magnify/2.3.2/js/jquery.magnify.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/magnify/2.3.2/js/jquery.magnify.min.js.map"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/magnify/2.3.2/js/jquery.magnify-mobile.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/magnify/2.3.2/js/jquery.magnify-mobile.min.js.map"></script>
+<script>
+    // $('.buy').click(function () {
+    //     $('.bottom').addClass("clicked");
+    // });
+    //
+    // $('.remove').click(function () {
+    //     $('.bottom').removeClass("clicked");
+    // });
+    $(document).ready(() => {
+        $('.zoom').magnify();
+    })
+</script>
+{% endblock %}
